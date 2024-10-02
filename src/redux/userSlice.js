@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-const userSlice = createSlice({
+const usersSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
@@ -11,7 +11,7 @@ const userSlice = createSlice({
     },
     editUser: (state, action) => {
       const { id, data } = action.payload;
-      const index = state.users.findIndex((user) => user.id === id);
+      const index = state.findIndex((user) => user.id === id);
       if (index !== -1) {
         state.users[index] = { ...state.users[index], ...data };
       }
@@ -22,5 +22,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { addUser, editUser, deleteUser } = createSlice.actions;
-export default userSlice.reducer;
+export const { addUser, editUser, deleteUser } = usersSlice.actions;
+export default usersSlice.reducer;
